@@ -1,0 +1,152 @@
+{
+    "intents": [
+        {
+            "name": "AMAZON.CancelIntent",
+            "samples": []
+        },
+        {
+            "name": "AMAZON.HelpIntent",
+            "samples": []
+        },
+        {
+            "name": "AMAZON.StopIntent",
+            "samples": []
+        },
+        {
+            "name": "FindBus",
+            "samples": [
+                "where is {busNumber} {busDirection}",
+                "when will {busNumber} {busDirection} arrive",
+                "where is bus {busNumber} {busDirection}",
+                "where is {busDirection} {busNumber}",
+                "Route {busNumber} {busDirection}",
+                "where is route {busNumber} headed {busDirection}",
+                "where is {busNumber}",
+                "where is route {busNumber}",
+                "where is bus {busNumber}",
+                "where is route {busNumber} heading {busDirection}",
+                "where is bus {busNumber} headed {busDirection}",
+                "where is bus {busNumber} heading {busDirection}",
+                "where is route {busNumber} {busDirection}"
+            ],
+            "slots": [
+                {
+                    "name": "busNumber",
+                    "type": "AMAZON.NUMBER",
+                    "samples": [
+                        "{busNumber} please",
+                        "route {busNumber}"
+                    ]
+                },
+                {
+                    "name": "busDirection",
+                    "type": "Direction",
+                    "samples": [
+                        "{busDirection} please"
+                    ]
+                }
+            ]
+        }
+    ],
+    "types": [
+        {
+            "name": "Direction",
+            "values": [
+                {
+                    "id": null,
+                    "name": {
+                        "value": "Northbound",
+                        "synonyms": [
+                            "N",
+                            "north"
+                        ]
+                    }
+                },
+                {
+                    "id": null,
+                    "name": {
+                        "value": "Southbound",
+                        "synonyms": [
+                            "S",
+                            "south"
+                        ]
+                    }
+                },
+                {
+                    "id": null,
+                    "name": {
+                        "value": "Eastbound",
+                        "synonyms": [
+                            "E",
+                            "east"
+                        ]
+                    }
+                },
+                {
+                    "id": null,
+                    "name": {
+                        "value": "Westbound",
+                        "synonyms": [
+                            "W",
+                            "west"
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "prompts": [
+        {
+            "id": "Elicit.Intent-FindBus.IntentSlot-busNumber",
+            "promptVersion": "1.0",
+            "definitionVersion": "1.0",
+            "variations": [
+                {
+                    "type": "PlainText",
+                    "value": "Which bus route number?"
+                }
+            ]
+        },
+        {
+            "id": "Elicit.Intent-FindBus.IntentSlot-busDirection",
+            "promptVersion": "1.0",
+            "definitionVersion": "1.0",
+            "variations": [
+                {
+                    "type": "PlainText",
+                    "value": "Which direction?"
+                }
+            ]
+        }
+    ],
+    "dialog": {
+        "version": "1.0",
+        "intents": [
+            {
+                "name": "FindBus",
+                "confirmationRequired": false,
+                "prompts": {},
+                "slots": [
+                    {
+                        "name": "busNumber",
+                        "type": "AMAZON.NUMBER",
+                        "elicitationRequired": true,
+                        "confirmationRequired": false,
+                        "prompts": {
+                            "elicit": "Elicit.Intent-FindBus.IntentSlot-busNumber"
+                        }
+                    },
+                    {
+                        "name": "busDirection",
+                        "type": "Direction",
+                        "elicitationRequired": true,
+                        "confirmationRequired": false,
+                        "prompts": {
+                            "elicit": "Elicit.Intent-FindBus.IntentSlot-busDirection"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

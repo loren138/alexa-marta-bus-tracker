@@ -1,0 +1,20 @@
+{
+  "name": "skill-marta-bus-tracker",
+  "version": "1.0.0",
+  "description": "Track MARTA Bus Routes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "alexa",
+    "skill",
+    "marta"
+  ],
+  "author": "Loren Klingman",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "alexa-sdk": "^1.0.6",
+    "http": "0.0.0"
+  }
+}
