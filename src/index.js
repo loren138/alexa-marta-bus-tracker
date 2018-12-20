@@ -1,5 +1,4 @@
 "use strict";
-var APP_ID = undefined;  // TODO replace with your app ID (OPTIONAL).
 
 var Alexa = require('alexa-sdk');
 // Credit: jesal https://stackoverflow.com/a/14822579/3854385
@@ -199,12 +198,7 @@ var http = require('http');
 function httpGet(route, direction, callback) {
 
     direction = direction.toLowerCase();
-    // GET is a web service request that is fully defined by a URL string
-    // Try GET in your browser:
-    // https://cp6gckjt97.execute-api.us-east-1.amazonaws.com/prod/stateresource?usstate=New%20Jersey
 
-
-    // Update these options with the details of the web service you would like to call
     //http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetBusByRoute/120
     var options = {
         host: 'developer.itsmarta.com',
@@ -239,7 +233,8 @@ function httpGet(route, direction, callback) {
             } catch (e) {
                 console.error(e);
                 console.log(returnData);
-                return [[],[]];
+                callback([[],[]]);
+                return;
             }
             var apply = [];
             var directions = [];
